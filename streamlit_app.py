@@ -123,4 +123,3 @@ input_df['Stress_Factors_Medium'] = 1 if Stress_Factors == 'Medium' else 0
 
 # Присваиваем возраст отдельно
 input_df['age'] = age
-st.write(input_df)
