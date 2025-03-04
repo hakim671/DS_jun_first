@@ -29,7 +29,6 @@ Substance_use = st.selectbox(label='Употребляешь вредные ве
 Suicide_Attempt = st.selectbox(label='Попытки самоубийства?', options=['No', 'Yes'], index=0)
 Social_Support = st.selectbox(label='Поддержка окружающих', options=['High', 'Low', 'Medium'], index=2)
 Stress_Factors = st.selectbox(label='Уровень стресса', options=['High', 'Low', 'Medium'], index=2)
-
 input_data = {'age': age, 'Family_History': Family_History}
 
 # Заполняем one-hot encoding признаков
@@ -48,5 +47,7 @@ for col in X_train.columns:
         input_df[col] = 0
 input_df = input_df[X_train.columns]
 
-if st.button("Прогноз"):
-  model.predict(df_inp)
+# Прогноз
+if st.button('Прогноз'):
+    prediction = model.predict(input_df)
+    st.write(f'Предсказание: {"Положительный диагноз" if prediction[0] == 1 else "Отрицательный диагноз"}')
