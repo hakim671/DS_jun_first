@@ -31,7 +31,11 @@ Social_Support = st.selectbox(label='Поддержка окружающих', o
 Stress_Factors = st.selectbox(label='Уровень стресса', options=['High', 'Low', 'Medium'], index=2)
 
 cat = X_train.columns.to_list()
-input_df = pd.DataFrame(0, columns=cat)
+input_df = pd.DataFrame(columns=cat)
+
+# Заполнение значениями 0 или других значений в DataFrame
+for col in cat:
+    input_df[col] = 0
 
 # Gender
 if gender == 'male':
