@@ -29,18 +29,24 @@ Suicide_Attempt = st.selectbox(label="Попытки самоубийства?",
 Social_Support = st.selectbox(label="Поддержка окружающих", options=['High', 'Low', 'Medium'], index=2)
 Stress_Factors = st.selectbox(label="Уровень стресса", options=['High', 'Low', 'Medium'], index=2)
 
-df_inp = pd.DataFrame({'age':[age],
-                       'gender':[gender],
-                       'edu_lvl':[edu_lvl],
-                       'marital_status':[marital_status],
-                       'occupation':[occupation],
-                       'income_lvl':[income_lvl],
-                       'live_area':[live_area],
-                       'Family_History':[Family_History],
-                       'Substance_use':[Substance_use],
-                       'Suicide_Attempt':[Suicide_Attempt],
-                       'Social_Support':[Social_Support],
-                       'Stress_Factors':[Stress_Factors]})
-df_inp = pd.get_dummies(df_inp)
+input_data = {
+    'age': age,
+    'Family_History': Family_History,
+    f'gender_{gender}': 1,
+    f'edu_lvl_{edu_lvl}': 1,
+    f'marital_status_{marital_status}': 1,
+    f'occupation_{occupation}': 1,
+    f'income_lvl_{income_lvl}': 1,
+    f'live_area_{live_area}': 1,
+    f'Substance_use_{Substance_use}': 1,
+    f'Suicide_Attempt_{Suicide_Attempt}': 1,
+    f'Social_Support_{Social_Support}': 1,
+    f'Stress_Factors_{Stress_Factors}': 1
+}
+for col in X_train.columns:
+    if col not in input_data:
+        input_data[col] = 0
+input_df = pd.DataFrame([input_data])
+
 if st.button("Прогноз"):
   model.predict(df_inp)
