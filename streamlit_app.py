@@ -123,3 +123,6 @@ input_df['Stress_Factors_Medium'] = 1 if Stress_Factors == 'Medium' else 0
 
 # Присваиваем возраст отдельно
 input_df['age'] = age
+
+if st.button("Прогноз"):
+    st.write(model.predict(input_df))
