@@ -29,26 +29,65 @@ Substance_use = st.selectbox(label='Употребляешь вредные ве
 Suicide_Attempt = st.selectbox(label='Попытки самоубийства?', options=['No', 'Yes'], index=0)
 Social_Support = st.selectbox(label='Поддержка окружающих', options=['High', 'Low', 'Medium'], index=2)
 Stress_Factors = st.selectbox(label='Уровень стресса', options=['High', 'Low', 'Medium'], index=2)
-input_data = {'age': age, 'Family_History': Family_History}
 
-# Добавляем категориальные переменные
-for feature in ['gender', 'edu_lvl', 'marital_status', 'occupation', 'income_lvl', 'live_area',
-                'Substance_use', 'Suicide_Attempt', 'Social_Support', 'Stress_Factors']:
-    column_name = f'{feature}_{eval(feature)}'  # Создаем название колонки
-    input_data[column_name] = 1  # Устанавливаем 1 в нужном месте
+cat = X_train.columns.to_list()
+input_df = pd.DataFrame(0, columns=cat)
 
-# Преобразуем в DataFrame
-input_df = pd.DataFrame([input_data])
+# Gender
+if gender == 'male':
+    input_df['gender_male'] = 1
+else:
+    input_df['gender_female'] = 1
 
-# Добавляем все недостающие колонки
-missing_cols = set(X_train.columns) - set(input_df.columns)
-for col in missing_cols:
-    input_df[col] = 0  # Добавляем их со значением 0
+# Education level
+input_df['edu_lvl_High_School'] = 1 if edu_lvl == 'High_School' else 0
+input_df['edu_lvl_Middle_School'] = 1 if edu_lvl == 'Middle_School' else 0
+input_df['edu_lvl_Postgraduate'] = 1 if edu_lvl == 'Postgraduate' else 0
+input_df['edu_lvl_Primary'] = 1 if edu_lvl == 'Primary' else 0
+input_df['edu_lvl_University'] = 1 if edu_lvl == 'University' else 0
 
-# Приводим столбцы в тот же порядок, что и в X_train
-input_df = input_df[X_train.columns]
+# Marital status
+input_df['marital_status_Divorced'] = 1 if marital_status == 'Divorced' else 0
+input_df['marital_status_Married'] = 1 if marital_status == 'Married' else 0
+input_df['marital_status_Single'] = 1 if marital_status == 'Single' else 0
+input_df['marital_status_Widowed'] = 1 if marital_status == 'Widowed' else 0
 
-# Прогноз
-if st.button("Прогноз"):
-    prediction = model.predict(input_df)
-    st.write(f'Предсказание: {"Положительный диагноз" if prediction[0] == 1 else "Отрицательный диагноз"}')
+# Occupation
+input_df['occupation_Employed'] = 1 if occupation == 'Employed' else 0
+input_df['occupation_Retired'] = 1 if occupation == 'Retired' else 0
+input_df['occupation_Student'] = 1 if occupation == 'Student' else 0
+input_df['occupation_Unemployed'] = 1 if occupation == 'Unemployed' else 0
+
+# Income level
+input_df['income_lvl_High'] = 1 if income_lvl == 'High' else 0
+input_df['income_lvl_Low'] = 1 if income_lvl == 'Low' else 0
+input_df['income_lvl_Medium'] = 1 if income_lvl == 'Medium' else 0
+
+# Living area
+input_df['live_area_city'] = 1 if live_area == 'city' else 0
+input_df['live_area_village'] = 1 if live_area == 'village' else 0
+
+# Family History
+input_df['Family_History'] = Family_History
+
+# Substance use
+input_df['Substance_use_Yes'] = 1 if Substance_use == 'Yes' else 0
+input_df['Substance_use_No'] = 1 if Substance_use == 'No' else 0
+
+# Suicide Attempt
+input_df['Suicide_Attempt_Yes'] = 1 if Suicide_Attempt == 'Yes' else 0
+input_df['Suicide_Attempt_No'] = 1 if Suicide_Attempt == 'No' else 0
+
+# Social Support
+input_df['Social_Support_High'] = 1 if Social_Support == 'High' else 0
+input_df['Social_Support_Low'] = 1 if Social_Support == 'Low' else 0
+input_df['Social_Support_Medium'] = 1 if Social_Support == 'Medium' else 0
+
+# Stress Factors
+input_df['Stress_Factors_High'] = 1 if Stress_Factors == 'High' else 0
+input_df['Stress_Factors_Low'] = 1 if Stress_Factors == 'Low' else 0
+input_df['Stress_Factors_Medium'] = 1 if Stress_Factors == 'Medium' else 0
+
+# Присваиваем возраст отдельно
+input_df['age'] = age
+st.write(input_df)
