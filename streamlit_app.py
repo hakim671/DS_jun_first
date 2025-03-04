@@ -31,23 +31,24 @@ Social_Support = st.selectbox(label='Поддержка окружающих', o
 Stress_Factors = st.selectbox(label='Уровень стресса', options=['High', 'Low', 'Medium'], index=2)
 input_data = {'age': age, 'Family_History': Family_History}
 
-# Заполняем one-hot encoding признаков
-categorical_features = ['gender', 'edu_lvl', 'marital_status', 'occupation', 'income_lvl', 'live_area', 'Substance_use', 'Suicide_Attempt', 'Social_Support', 'Stress_Factors']
-for feature in categorical_features:
-    column_name = f'{feature}_{eval(feature)}'  # Генерация правильного имени колонки
-    input_data[column_name] = 1
+# Добавляем категориальные переменные
+for feature in ['gender', 'edu_lvl', 'marital_status', 'occupation', 'income_lvl', 'live_area',
+                'Substance_use', 'Suicide_Attempt', 'Social_Support', 'Stress_Factors']:
+    column_name = f'{feature}_{eval(feature)}'  # Создаем название колонки
+    input_data[column_name] = 1  # Устанавливаем 1 в нужном месте
 
-# Преобразование в DataFrame и дополнение отсутствующих столбцов
+# Преобразуем в DataFrame
 input_df = pd.DataFrame([input_data])
-input_df = pd.get_dummies(input_df)
 
-# Добавляем недостающие колонки и сортируем
-for col in X_train.columns:
-    if col not in input_df.columns:
-        input_df[col] = 0
+# Добавляем все недостающие колонки
+missing_cols = set(X_train.columns) - set(input_df.columns)
+for col in missing_cols:
+    input_df[col] = 0  # Добавляем их со значением 0
+
+# Приводим столбцы в тот же порядок, что и в X_train
 input_df = input_df[X_train.columns]
 
 # Прогноз
-if st.button('Прогноз'):
+if st.button("Прогноз"):
     prediction = model.predict(input_df)
     st.write(f'Предсказание: {"Положительный диагноз" if prediction[0] == 1 else "Отрицательный диагноз"}')
