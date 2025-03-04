@@ -22,6 +22,25 @@ edu_lvl = st.selectbox(label='Образование', options=['High_School','M
 marital_status = st.selectbox(label='Семейный статус', options=['Divorced','Married','Single','Widowed'], index=2)
 occupation = st.selectbox(label='Профессия', options=['Employed','Retired','Student','Unemployed'], index=2)
 income_lvl = st.selectbox(label='Уровень дохода', options=['High', 'Low', 'Medium'], index=2)
+live_area = st.selectbox(label='Место проживания', options=['city', 'village'], index=0)
+Family_History = st.selectbox(label, options=[0,1], index=0)
+Substance_use = st.selectbox(label, options=['No', 'Yes'], index=0)
+Suicide_Attempt = st.selectbox(label, options=['No', 'Yes'], index=0)
+Social_Support = st.selectbox(label, options=['High', 'Low', 'Medium'], index=0)
+Stress_Factors = st.selectbox(label, options=['High', 'Low', 'Medium'], index=0)
 
-
-
+df_inp = pd.DataFrame({'age':[age],
+                       'gender':[gender],
+                       'edu_lvl':[edu_lvl],
+                       'marital_status':[marital_status],
+                       'occupation':[occupation],
+                       'income_lvl':[income_lvl],
+                       'live_area':[live_area],
+                       'Family_History':[Family_History],
+                       'Substance_use':[Substance_use],
+                       'Suicide_Attempt':[Suicide_Attempt],
+                       'Social_Support':[Social_Support],
+                       'Stress_Factors':[Stress_Factors]})
+df_inp = pd.get_dummies(df_inp)
+if st.button("Прогноз"):
+  model.predict(df_inp)
