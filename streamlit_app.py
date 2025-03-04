@@ -30,32 +30,22 @@ Suicide_Attempt = st.selectbox(label='Попытки самоубийства?',
 Social_Support = st.selectbox(label='Поддержка окружающих', options=['High', 'Low', 'Medium'], index=2)
 Stress_Factors = st.selectbox(label='Уровень стресса', options=['High', 'Low', 'Medium'], index=2)
 
-# Создание входных данных в формате словаря
-input_data = {
-    'age': age,
-    'Family_History': Family_History,
-    f'gender_{gender}': 1,
-    f'edu_lvl_{edu_lvl}': 1,
-    f'marital_status_{marital_status}': 1,
-    f'occupation_{occupation}': 1,
-    f'income_lvl_{income_lvl}': 1,
-    f'live_area_{live_area}': 1,
-    f'Substance_use_{Substance_use}': 1,
-    f'Suicide_Attempt_{Suicide_Attempt}': 1,
-    f'Social_Support_{Social_Support}': 1,
-    f'Stress_Factors_{Stress_Factors}': 1
-}
+input_data = {'age': age, 'Family_History': Family_History}
+
+# Заполняем one-hot encoding признаков
+categorical_features = ['gender', 'edu_lvl', 'marital_status', 'occupation', 'income_lvl', 'live_area', 'Substance_use', 'Suicide_Attempt', 'Social_Support', 'Stress_Factors']
+for feature in categorical_features:
+    column_name = f'{feature}_{eval(feature)}'  # Генерация правильного имени колонки
+    input_data[column_name] = 1
 
 # Преобразование в DataFrame и дополнение отсутствующих столбцов
 input_df = pd.DataFrame([input_data])
 input_df = pd.get_dummies(input_df)
 
-# Добавление отсутствующих столбцов (заполняем 0, если их нет в input_df)
+# Добавляем недостающие колонки и сортируем
 for col in X_train.columns:
     if col not in input_df.columns:
         input_df[col] = 0
-
-# Удаление лишних столбцов (если есть)
 input_df = input_df[X_train.columns]
 
 if st.button("Прогноз"):
