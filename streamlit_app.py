@@ -43,10 +43,15 @@ input_data = {
     f'Social_Support_{Social_Support}': 1,
     f'Stress_Factors_{Stress_Factors}': 1
 }
-for col in X_train.columns:
-    if col not in input_data:
-        input_data[col] = 0
 input_df = pd.DataFrame([input_data])
+input_df = pd.get_dummies(input_df)
+
+for col in X_train.columns:
+    if col not in input_df:
+        input_df[col] = 0
+
+# Убедимся, что порядок признаков совпадает
+input_df = input_df[X_train.columns]
 
 if st.button("Прогноз"):
   model.predict(df_inp)
