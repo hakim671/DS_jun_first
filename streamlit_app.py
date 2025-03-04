@@ -26,8 +26,8 @@ live_area = st.selectbox(label='Место проживания', options=['city
 Family_History = st.selectbox(label="Есть в роду шизофреник?", options=[0,1], index=0)
 Substance_use = st.selectbox(label="Употребляешь вредные вещества?", options=['No', 'Yes'], index=0)
 Suicide_Attempt = st.selectbox(label="Попытки самоубийства?", options=['No', 'Yes'], index=0)
-Social_Support = st.selectbox(label="Поддержка окружающих", options=['High', 'Low', 'Medium'], index=0)
-Stress_Factors = st.selectbox(label="Уровень стресса", options=['High', 'Low', 'Medium'], index=0)
+Social_Support = st.selectbox(label="Поддержка окружающих", options=['High', 'Low', 'Medium'], index=2)
+Stress_Factors = st.selectbox(label="Уровень стресса", options=['High', 'Low', 'Medium'], index=2)
 
 df_inp = pd.DataFrame({'age':[age],
                        'gender':[gender],
