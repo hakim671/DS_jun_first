@@ -30,12 +30,41 @@ Suicide_Attempt = st.selectbox(label='Попытки самоубийства?',
 Social_Support = st.selectbox(label='Поддержка окружающих', options=['High', 'Low', 'Medium'], index=2)
 Stress_Factors = st.selectbox(label='Уровень стресса', options=['High', 'Low', 'Medium'], index=2)
 
-cat = X_train.columns.to_list()
-input_df = pd.DataFrame(columns=cat)
+input_df = pd.DataFrame({
+    'age': [age],
+    'Family_History': [Family_History],
+    'gender_female': [0],
+    'gender_male': [0],
+    'edu_lvl_High_School': [0],
+    'edu_lvl_Middle_School': [0],
+    'edu_lvl_Postgraduate': [0],
+    'edu_lvl_Primary': [0],
+    'edu_lvl_University': [0],
+    'marital_status_Divorced': [0],
+    'marital_status_Married': [0],
+    'marital_status_Single': [0],
+    'marital_status_Widowed': [0],
+    'occupation_Employed': [0],
+    'occupation_Retired': [0],
+    'occupation_Student': [0],
+    'occupation_Unemployed': [0],
+    'income_lvl_High': [0],
+    'income_lvl_Low': [0],
+    'income_lvl_Medium': [0],
+    'live_area_city': [0],
+    'live_area_village': [0],
+    'Substance_use_No': [0],
+    'Substance_use_Yes': [0],
+    'Suicide_Attempt_No': [0],
+    'Suicide_Attempt_Yes': [0],
+    'Social_Support_High': [0],
+    'Social_Support_Low': [0],
+    'Social_Support_Medium': [0],
+    'Stress_Factors_High': [0],
+    'Stress_Factors_Low': [0],
+    'Stress_Factors_Medium': [0]
+})
 
-# Заполнение значениями 0 или других значений в DataFrame
-for col in cat:
-    input_df[col] = 0
 
 # Gender
 if gender == 'male':
