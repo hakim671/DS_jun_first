@@ -125,4 +125,8 @@ input_df['Stress_Factors_Medium'] = 1 if Stress_Factors == 'Medium' else 0
 input_df['age'] = age
 
 if st.button("Прогноз"):
-    st.write(model.predict(input_df))
+    y_score = model.predict_proba(input_df)[:, 1]
+    if y_score >= 0.35:
+        st.write("Вы больны!!!")
+    else:
+        st.write("Вы здоровы!")
