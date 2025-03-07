@@ -138,6 +138,6 @@ input_df['age'] = age
 if st.button("Прогноз"):
     y_score = model.predict_proba(input_df)[:, 1]
     if y_score >= 0.35:
-    st.markdown("## :red[Вы больны!!!]")
-else:
-    st.markdown("## :green[Вы здоровы!]")
+        st.markdown("## :red[Вы больны!!!]")
+    else:
+        st.markdown("## :green[Вы здоровы!]")
