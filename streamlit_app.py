@@ -4,7 +4,33 @@ import pandas as pd
 import numpy as np
 from sklearn.model_selection import train_test_split
 
-st.title("Прогноз шизофрении😵‍💫")
+
+st.markdown(
+    """
+    <style>
+        .stButton>button {
+            background-color: #ff4b4b;
+            color: white;
+            font-size: 18px;
+            border-radius: 10px;
+            padding: 10px 20px;
+        }
+        .stButton>button:hover {
+            background-color: #ff1a1a;
+        }
+        .title {
+            font-size: 36px;
+            font-weight: bold;
+            color: #ff4b4b;
+            text-align: center;
+        }
+    </style>
+    """,
+    unsafe_allow_html=True
+)
+st.markdown('<p class="title">Прогноз шизофрении</p>', unsafe_allow_html=True)
+
+
 st.markdown("### Введите свои данные и получите прогноз.")
 
 @st.cache_data
