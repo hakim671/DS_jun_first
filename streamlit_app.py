@@ -16,8 +16,7 @@ st.markdown(
             padding: 10px 20px;
         }
     </style>
-    """,
-    unsafe_allow_html=True
+    """
 )
 st.markdown('<p class="title">Прогноз шизофрении</p>', unsafe_allow_html=True)
 
