@@ -15,15 +15,6 @@ st.markdown(
             border-radius: 10px;
             padding: 10px 20px;
         }
-        .stButton>button:hover {
-            background-color: #ff1a1a;
-        }
-        .title {
-            font-size: 36px;
-            font-weight: bold;
-            color: #ff4b4b;
-            text-align: center;
-        }
     </style>
     """,
     unsafe_allow_html=True
