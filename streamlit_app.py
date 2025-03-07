@@ -137,7 +137,9 @@ input_df['age'] = age
 
 if st.button("Прогноз"):
     y_score = model.predict_proba(input_df)[:, 1]
+    with st.spinner("Анализируем данные..."):
+        time.sleep(2)
     if y_score >= 0.35:
-        st.markdown("## :red[Вы больны!!!]")
+        st.error("⚠️ **Высокая вероятность заболевания!** Обратитесь к специалисту.")
     else:
-        st.markdown("## :green[Вы здоровы!]")
+        st.success("✅ **Вы здоровы!** Вероятность заболевания низкая.")
