@@ -4,7 +4,7 @@ import pandas as pd
 import numpy as np
 from sklearn.model_selection import train_test_split
 
-st.markdown('Прогноз шизофрении😵‍💫')
+st.markdown('# Прогноз шизофрении😵‍💫')
 st.markdown("### Введите свои данные и получите прогноз.")
 
 @st.cache_data
