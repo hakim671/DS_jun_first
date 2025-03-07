@@ -4,7 +4,13 @@ import pandas as pd
 import numpy as np
 from sklearn.model_selection import train_test_split
 
-df = pd.read_excel('final_prj.xlsx')
+@st.cache_data
+def load_data():
+    df = pd.read_excel('final_prj.xlsx')
+    return df
+
+df = load_data()
+
 X = df.drop(['diagnosis'], axis=1)
 y = df['diagnosis']
 
