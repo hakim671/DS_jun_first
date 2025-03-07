@@ -4,23 +4,7 @@ import pandas as pd
 import numpy as np
 from sklearn.model_selection import train_test_split
 
-
-st.markdown(
-    """
-    <style>
-        .stButton>button {
-            background-color: #ff4b4b;
-            color: white;
-            font-size: 18px;
-            border-radius: 10px;
-            padding: 10px 20px;
-        }
-    </style>
-    """
-)
-st.markdown('<p class="title">Прогноз шизофрении</p>', unsafe_allow_html=True)
-
-
+st.markdown('Прогноз шизофрении😵‍💫')
 st.markdown("### Введите свои данные и получите прогноз.")
 
 @st.cache_data
