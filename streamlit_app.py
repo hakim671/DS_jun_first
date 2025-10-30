@@ -156,6 +156,9 @@ ax.set_xlabel("Коэффициент влияния")
 ax.set_title("Важность признаков")
 
 st.pyplot(fig)
+# y_test и y_pred — это настоящие и предсказанные значения
+accuracy = accuracy_score(y_test, model.predict(X_test))
+st.write(f"🎯 Точность модели: {accuracy * 100:.2f}%")
 
 
 if st.button("Прогноз"):
