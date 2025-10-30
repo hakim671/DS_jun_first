@@ -138,6 +138,6 @@ input_df['age'] = age
 if st.button("Прогноз"):
     y_score = model.predict_proba(input_df)[:, 1]
     if y_score >= 0.35:
-        st.error(f"⚠️ **Высокая вероятность заболевания({y_score})!** Обратитесь к специалисту.")
+        st.error(f"⚠️ **Высокая вероятность заболевания({round(y_score,2)})!** Обратитесь к специалисту.")
     else:
-        st.success(f"✅ **Вы здоровы!** Вероятность заболевания низкая({y_score}).")
+        st.success(f"✅ **Вы здоровы!** Вероятность заболевания низкая({round(y_score)}).")
