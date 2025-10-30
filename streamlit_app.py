@@ -4,6 +4,7 @@ import pandas as pd
 import numpy as np
 from sklearn.model_selection import train_test_split
 import matplotlib.pyplot as plt
+from sklearn.metrics import accuracy_score
 
 st.markdown('# Прогноз шизофрении😵‍💫')
 st.markdown("### Введите свои данные и получите прогноз.")
