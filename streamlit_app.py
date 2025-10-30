@@ -153,7 +153,7 @@ ax.barh(importance_df["Feature"], importance_df["Coefficient"], color="skyblue")
 ax.axvline(0, color="black", linewidth=1)
 ax.invert_yaxis()
 ax.set_xlabel("Коэффициент влияния")
-ax.set_title("📈 Важность признаков")
+ax.set_title("Важность признаков")
 
 st.pyplot(fig)
 
