@@ -136,8 +136,8 @@ input_df['Stress_Factors_Medium'] = 1 if Stress_Factors == 'Medium' else 0
 input_df['age'] = age
 
 if st.button("Прогноз"):
-    y_score = model.predict_proba(input_df)[:, 1]
+    y_score = model.predict_proba(input_df)[:, 1][0]  # берем первое значение
     if y_score >= 0.35:
-        st.error(f"⚠️ **Высокая вероятность заболевания({round(y_score,2)})!** Обратитесь к специалисту.")
+        st.error(f"⚠️ **Высокая вероятность заболевания ({round(y_score, 2)})!** Обратитесь к специалисту.")
     else:
-        st.success(f"✅ **Вы здоровы!** Вероятность заболевания низкая({round(y_score)}).")
+        st.success(f"✅ **Вы здоровы!** Вероятность заболевания низкая ({round(y_score, 2)}).")
