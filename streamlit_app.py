@@ -3,7 +3,6 @@ from sklearn.linear_model import LogisticRegression
 import pandas as pd
 import numpy as np
 from sklearn.model_selection import train_test_split
-import matplotlib.pyplot as plt
 
 
 st.markdown('# Прогноз шизофрении😵‍💫')
@@ -136,27 +135,6 @@ input_df['Stress_Factors_Medium'] = 1 if Stress_Factors == 'Medium' else 0
 
 # Присваиваем возраст отдельно
 input_df['age'] = age
-
-
-coef = model.coef_[0]
-features = input_df.columns
-
-# Создаём DataFrame для наглядности
-importance_df = pd.DataFrame({
-    "Feature": features,
-    "Coefficient": coef,
-    "Absolute": np.abs(coef)
-}).sort_values(by="Absolute", ascending=False)
-
-# Визуализация
-fig, ax = plt.subplots(figsize=(8, 5))
-ax.barh(importance_df["Feature"], importance_df["Coefficient"], color="skyblue")
-ax.axvline(0, color="black", linewidth=1)
-ax.invert_yaxis()
-ax.set_xlabel("Коэффициент влияния")
-ax.set_title("Важность признаков")
-
-st.pyplot(fig)
 
 
 
