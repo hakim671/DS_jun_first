@@ -18,13 +18,13 @@ df = load_data()
 X = df.drop(['diagnosis'], axis=1)
 y = df['diagnosis']
 
-X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.15, random_state=42, stratify=y)
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.05, random_state=42, stratify=y)
 
 X_train = pd.get_dummies(X_train)
 X_test = pd.get_dummies(X_test)
 
 model = LogisticRegression(random_state=42, C = 0.03, max_iter = 120, penalty = 'l2', solver = 'saga')
-model.fit(X, y)
+model.fit(X_train, y_train)
 
 # Ввод данных от пользователя
 with st.sidebar:
