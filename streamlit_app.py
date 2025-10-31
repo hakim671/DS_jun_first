@@ -11,7 +11,7 @@ st.markdown("### Введите свои данные и получите про
 
 @st.cache_data
 def load_data():
-    df = pd.read_excel('final_prj.xlsx')
+    df = pd.read_excel('fnl_prj.xlsx')
     return df
 
 df = load_data()
