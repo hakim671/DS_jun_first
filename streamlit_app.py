@@ -32,7 +32,7 @@ with st.sidebar:
     st.header("Введите данные пациента")
     age = st.number_input(label='Возраст', value=40, step=5)
     gender = st.selectbox(label='Пол', options=['male', 'female'], index=0)
-    edu_lvl = st.selectbox(label='Образование', options=['High_School', 'Middle_School', 'Postgraduate', 'Primary', 'University'], index=3)
+    edu_lvl = st.selectbox(label='Образование', options=['High_School', 'Middle_School', 'Postgraduate', 'Primary', 'Undergraduate'], index=3)
     marital_status = st.selectbox(label='Семейный статус', options=['Divorced', 'Married', 'Single', 'Widowed'], index=2)
     occupation = st.selectbox(label='Профессия', options=['Employed', 'Retired', 'Student', 'Unemployed'], index=2)
     income_lvl = st.selectbox(label='Уровень дохода', options=['High', 'Low', 'Medium'], index=2)
@@ -52,7 +52,7 @@ input_df = pd.DataFrame({
     'edu_lvl_Middle_School': [0],
     'edu_lvl_Postgraduate': [0],
     'edu_lvl_Primary': [0],
-    'edu_lvl_University': [0],
+    'edu_lvl_Undergraduate': [0],
     'marital_status_Divorced': [0],
     'marital_status_Married': [0],
     'marital_status_Single': [0],
@@ -90,7 +90,7 @@ input_df['edu_lvl_High_School'] = 1 if edu_lvl == 'High_School' else 0
 input_df['edu_lvl_Middle_School'] = 1 if edu_lvl == 'Middle_School' else 0
 input_df['edu_lvl_Postgraduate'] = 1 if edu_lvl == 'Postgraduate' else 0
 input_df['edu_lvl_Primary'] = 1 if edu_lvl == 'Primary' else 0
-input_df['edu_lvl_University'] = 1 if edu_lvl == 'University' else 0
+input_df['edu_lvl_Undergraduate'] = 1 if edu_lvl == 'Undergraduate' else 0
 
 # Marital status
 input_df['marital_status_Divorced'] = 1 if marital_status == 'Divorced' else 0
