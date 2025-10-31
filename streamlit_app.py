@@ -24,7 +24,7 @@ X_train = pd.get_dummies(X_train)
 X_test = pd.get_dummies(X_test)
 
 model = LogisticRegression(random_state=42, C = 0.03, max_iter = 120, penalty = 'l2', solver = 'saga')
-model.fit(X_train, y_train)
+model.fit(X, y)
 
 # Ввод данных от пользователя
 with st.sidebar:
