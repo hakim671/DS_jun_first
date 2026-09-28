@@ -265,7 +265,7 @@ with st.sidebar:
     live_area = st.selectbox(label="Место проживания", options=["city", "village"], index=0)
 
     st.markdown("## Клинические факторы")
-    Family_History = st.selectbox(label="Есть в роду шизофреник?", options=[0, 1], index=0)
+    Family_History = st.selectbox(label="Есть в роду шизофреник?", options=["No", "Yes"], index=0)
     Substance_use = st.selectbox(label="Употребляет вредные вещества?", options=["No", "Yes"], index=0)
     Suicide_Attempt = st.selectbox(label="Попытки самоубийства?", options=["No", "Yes"], index=0)
     Social_Support = st.selectbox(label="Поддержка окружающих", options=["High", "Low", "Medium"], index=2)
@@ -276,7 +276,7 @@ with st.sidebar:
 # ------------------------------------------------------------------
 input_df = pd.DataFrame({
     'age': [age],
-    'Family_History': [Family_History],
+    'Family_History': [0],
     'gender_female': [0],
     'gender_male': [0],
     'edu_lvl_High_School': [0],
@@ -337,7 +337,7 @@ input_df['income_lvl_Medium'] = 1 if income_lvl == 'Medium' else 0
 input_df['live_area_city'] = 1 if live_area == 'city' else 0
 input_df['live_area_village'] = 1 if live_area == 'village' else 0
 
-input_df['Family_History'] = Family_History
+input_df['Family_History'] = 1 if Family_History == "Yes" else 0
 
 input_df['Substance_use_Yes'] = 1 if Substance_use == 'Yes' else 0
 input_df['Substance_use_No'] = 1 if Substance_use == 'No' else 0
